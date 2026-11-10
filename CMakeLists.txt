@@ -13,6 +13,7 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_executable(leichtdb
         src/main.cpp
+        src/storage/disk/disk_manager.cpp
 )
 
 target_include_directories(leichtdb PRIVATE src/include)
