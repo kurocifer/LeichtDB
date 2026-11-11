@@ -98,4 +98,9 @@ namespace leichtdb {
         pages_[pid] = offset;
         return offset;
     }
+
+    DiskManager::~DiskManager() {
+        std::scoped_lock scoped_db_io_latch(db_io_latch_);
+        db_io_.close();
+    }
 }
