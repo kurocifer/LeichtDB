@@ -13,11 +13,14 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 add_library(leichtdb_lib
     src/storage/disk/disk_manager.cpp
+        src/storage/disk/disk_schedular.cpp
 )
 target_include_directories(leichtdb_lib PUBLIC src/include)
 
 add_executable(leichtdb
         src/main.cpp
+        src/include/storage/disk/disk_schedular.h
+        src/include/common/channel.h
 )
 target_link_libraries(leichtdb PRIVATE leichtdb_lib)
 
@@ -32,6 +35,7 @@ FetchContent_MakeAvailable(googletest)
 
 add_executable(tests
         test/storage/disk/disk_manager_test.cpp
+        test/storage/disk/disk_schedular_test.cpp
 )
 
 target_link_libraries(tests PRIVATE leichtdb_lib GTest::gtest_main)
